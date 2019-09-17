@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        android:text="Event"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listEvent"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ViewWisata">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:src="@drawable/background2nd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:scaleType="centerCrop"
+                android:src="@drawable/gradient"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ScrollView
+                android:fillViewport="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txtNamaWisata"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:textSize="24sp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/txtAlamatWisata"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <fragment
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="360dp" />
+
+                    <TextView
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Sejarah : "
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:id="@+id/txtSejarahWisata"
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="Demografi : "
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:id="@+id/txtDemografiWisata"
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="Demografi : "
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:id="@+id/txtPotensiWisata"
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="List Foto : "
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/listWisataFoto"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="List Video : "
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <ListView
+                        android:id="@+id/listWisataVideo"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="List Atraksi : "
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/listWisataKegiatan"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

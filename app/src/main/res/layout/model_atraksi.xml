@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:id="@+id/imageAtraksi"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:scaleType="fitXY" />
+
+            <com.uncopt.android.widget.text.justify.JustifiedTextView
+                android:id="@+id/txtNamaAtraksi"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"
+                android:text="Nama Wisata"/>
+
+            <com.uncopt.android.widget.text.justify.JustifiedTextView
+                android:id="@+id/txtNamaWisata"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"
+                android:text="Nama Wisata"/>
+
+        </LinearLayout>
+
+</androidx.cardview.widget.CardView>
