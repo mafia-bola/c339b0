@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import com.disporapar.listdesawisata.API.Wisata;
 import com.disporapar.listdesawisata.API.WisataFoto;
 import com.disporapar.listdesawisata.API.WisataKegiatan;
 import com.disporapar.listdesawisata.API.WisataVideo;
+import com.disporapar.listdesawisata.CustomAdapter.AdapterVideo;
 import com.disporapar.listdesawisata.CustomAdapter.AdapterWisataFoto;
 import com.disporapar.listdesawisata.CustomAdapter.AdapterWisataKegiatan;
 import com.disporapar.listdesawisata.CustomAdapter.AdapterWisataVideo;
@@ -49,6 +51,7 @@ public class ViewWisata extends AppCompatActivity implements OnMapReadyCallback 
     ListView listVideo;
     AdapterWisataFoto adapterWisataFoto;
     AdapterWisataVideo adapterWisataVideo;
+
     AdapterWisataKegiatan adapterWisataKegiatan;
     LinearLayoutManager linearLayoutManager;
     ArrayList<WisataFoto> apiWisataFoto = new ArrayList<>();
@@ -305,7 +308,7 @@ public class ViewWisata extends AppCompatActivity implements OnMapReadyCallback 
                             }
 
                             adapterWisataKegiatan = new AdapterWisataKegiatan(getApplicationContext(), apiWisataKegiatan);
-                            linearLayoutManager = new LinearLayoutManager(ViewWisata.this, LinearLayoutManager.VERTICAL, false);
+                            linearLayoutManager = new LinearLayoutManager(ViewWisata.this, LinearLayoutManager.HORIZONTAL, false);
                             customDecoration = new CustomDecoration(10);
 
                             listKegiatan.setAdapter(adapterWisataKegiatan);

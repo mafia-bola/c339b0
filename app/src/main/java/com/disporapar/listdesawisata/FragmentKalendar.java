@@ -114,6 +114,7 @@ public class FragmentKalendar extends Fragment {
                             customDecoration = new CustomDecoration(10);
 
                             recyclerView.setAdapter(adapter);
+                            recyclerView.addItemDecoration(customDecoration);
                             adapter.notifyDataSetChanged();
                             adapter.notifyItemRemoved(response.length());
                             recyclerView.setLayoutManager(linearLayoutManager);
