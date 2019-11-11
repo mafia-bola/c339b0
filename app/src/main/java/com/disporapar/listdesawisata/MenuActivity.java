@@ -35,7 +35,6 @@ public class MenuActivity extends AppCompatActivity {
             R.drawable.ic_home_black_24dp,
             R.drawable.ic_dashboard_black_24dp,
             R.drawable.ic_library_books_black_24dp,
-            R.drawable.ic_book_black_24dp
     };
 
     @Override
@@ -128,16 +127,16 @@ public class MenuActivity extends AppCompatActivity {
     private void setupTabIcons() {
         Objects.requireNonNull(tabLayout.getTabAt(0)).setIcon(tabIcons[0]);
         Objects.requireNonNull(tabLayout.getTabAt(1)).setIcon(tabIcons[1]);
+//        Objects.requireNonNull(tabLayout.getTabAt(2)).setIcon(tabIcons[2]);
         Objects.requireNonNull(tabLayout.getTabAt(2)).setIcon(tabIcons[2]);
-        Objects.requireNonNull(tabLayout.getTabAt(3)).setIcon(tabIcons[3]);
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new FragmentWisata(), "Desa Wisata");
         adapter.addFrag(new FragmentAtraksi(), "Atraksi Wisata");
-        adapter.addFrag(new FragmentEvent(), "Event");
-        adapter.addFrag(new FragmentKalendar(), "Kalendar");
+//        adapter.addFrag(new FragmentEvent(), "Event");
+        adapter.addFrag(new FragmentKalendar(), "Event");
         viewPager.setAdapter(adapter);
     }
 
