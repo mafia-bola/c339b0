@@ -7,9 +7,9 @@
 
     <TextView
         android:textStyle="bold"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:textSize="24sp"
-        android:text="Kalendar"
+        android:text="Event"
         android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"

@@ -57,7 +57,7 @@ public class FragmentWisata extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editText.getText().toString() == null){
+                if (editText.getText().toString().equals("")){
                     dataWisata();
                     clearView();
                 } else {

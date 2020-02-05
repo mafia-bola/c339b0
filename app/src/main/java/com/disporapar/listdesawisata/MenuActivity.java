@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import io.paperdb.Paper;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -66,7 +69,7 @@ public class MenuActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Aplikasi Desa Wisata");
+        getSupportActionBar().setTitle("");
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
 
         viewPager = findViewById(R.id.viewPager);
@@ -102,6 +105,10 @@ public class MenuActivity extends AppCompatActivity {
                         AlertDialog alertDialog = alert.create();
                         alertDialog.show();
                         return true;
+                    case R.id.indonesiaLanguage:
+                        return true;
+                    case R.id.englishLanguage:
+                        return true;
                     default:
                         return true;
                 }
@@ -124,19 +131,19 @@ public class MenuActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
+
+
     private void setupTabIcons() {
         Objects.requireNonNull(tabLayout.getTabAt(0)).setIcon(tabIcons[0]);
         Objects.requireNonNull(tabLayout.getTabAt(1)).setIcon(tabIcons[1]);
 //        Objects.requireNonNull(tabLayout.getTabAt(2)).setIcon(tabIcons[2]);
-        Objects.requireNonNull(tabLayout.getTabAt(2)).setIcon(tabIcons[2]);
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new FragmentWisata(), "Desa Wisata");
-        adapter.addFrag(new FragmentAtraksi(), "Atraksi Wisata");
-//        adapter.addFrag(new FragmentEvent(), "Event");
-        adapter.addFrag(new FragmentKalendar(), "Event");
+        adapter.addFrag(new FragmentKegiatan(), "Kegiatan Wisata");
+//        adapter.addFrag(new FragmentKalendar(), "Event");
         viewPager.setAdapter(adapter);
     }
 

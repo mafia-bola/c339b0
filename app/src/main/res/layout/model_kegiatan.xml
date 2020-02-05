@@ -12,13 +12,13 @@
 
             <ImageView
                 android:layout_margin="10dp"
-                android:id="@+id/imageAtraksi"
+                android:id="@+id/imageKegiatan"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:scaleType="fitXY" />
+                android:scaleType="centerCrop" />
 
             <com.uncopt.android.widget.text.justify.JustifiedTextView
-                android:id="@+id/txtNamaAtraksi"
+                android:id="@+id/txtNamaKegiatan"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:textColor="#000"
@@ -26,20 +26,7 @@
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="horizontal"
-                android:text="Nama Wisata"/>
-
-            <com.uncopt.android.widget.text.justify.JustifiedTextView
-                android:id="@+id/txtNamaWisata"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="#000"
-                android:textSize="14sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="horizontal"
-                android:text="Nama Wisata"/>
+                android:scrollbars="horizontal" />
 
         </LinearLayout>
 

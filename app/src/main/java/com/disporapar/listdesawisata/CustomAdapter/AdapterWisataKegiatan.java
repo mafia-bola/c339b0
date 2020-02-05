@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.disporapar.listdesawisata.API.WisataKegiatan;
 import com.disporapar.listdesawisata.R;
-import com.disporapar.listdesawisata.ViewAtraksi;
+import com.disporapar.listdesawisata.ViewKegiatan;
 
 import java.util.ArrayList;
 
@@ -44,7 +44,7 @@ public class AdapterWisataKegiatan extends RecyclerView.Adapter<AdapterWisataKeg
         holder.imageAtraksi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent detail = new Intent(context, ViewAtraksi.class);
+                Intent detail = new Intent(context, ViewKegiatan.class);
                 detail.putExtra("nama_atraksi", wisataKegiatan.getNama_atraksi());
                 detail.putExtra("deskripsi", wisataKegiatan.getDeskripsi());
                 detail.putExtra("foto_atraksi", wisataKegiatan.getFoto_atraksi());

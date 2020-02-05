@@ -4,6 +4,6 @@
     <string name="openDrawer">Drawer dibuka</string>
     <string name="closeDrawer">Drawer ditutup</string>
 
-    <string name="alamatUrl">http://10.10.10.103/desawisata/public/</string>
+    <string name="alamatUrl">http://192.168.43.105/desawisata/public/</string>
     <string name="title_activity_maps">Map</string>
 </resources>

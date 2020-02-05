@@ -29,7 +29,7 @@
         <activity android:name=".ViewWisataFoto" />
         <activity android:name=".ViewWisata" />
         <activity android:name=".ViewKalendar" />
-        <activity android:name=".ViewAtraksi" />
+        <activity android:name=".ViewKegiatan" />
         <activity android:name=".ViewEvent" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".MainActivity">
