@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,13 +20,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.disporapar.listdesawisata.API.Wisata;
 import com.disporapar.listdesawisata.API.WisataFoto;
 import com.disporapar.listdesawisata.API.WisataKegiatan;
 import com.disporapar.listdesawisata.API.WisataVideo;
-import com.disporapar.listdesawisata.CustomAdapter.AdapterVideo;
 import com.disporapar.listdesawisata.CustomAdapter.AdapterWisataFoto;
-import com.disporapar.listdesawisata.CustomAdapter.AdapterWisataKegiatan;
 import com.disporapar.listdesawisata.CustomAdapter.AdapterWisataVideo;
 import com.disporapar.listdesawisata.CustomAdapter.CustomDecoration;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -48,12 +44,10 @@ public class ViewWisata extends AppCompatActivity implements OnMapReadyCallback 
 
     GoogleMap mMap;
     RecyclerView listFoto;
-//    RecyclerView listKegiatan;
     ListView listVideo;
     AdapterWisataFoto adapterWisataFoto;
     AdapterWisataVideo adapterWisataVideo;
 
-    AdapterWisataKegiatan adapterWisataKegiatan;
     LinearLayoutManager linearLayoutManager;
     ArrayList<WisataFoto> apiWisataFoto = new ArrayList<>();
     ArrayList<WisataVideo> apiWisataVideo = new ArrayList<>();
@@ -113,9 +107,6 @@ public class ViewWisata extends AppCompatActivity implements OnMapReadyCallback 
 
         listVideo = findViewById(R.id.listWisataVideo);
         dataVideo();
-
-//        listKegiatan = findViewById(R.id.listWisataKegiatan);
-//        dataAtraksi();
 
         apiWisataFoto.clear();
         apiWisataVideo.clear();
@@ -265,77 +256,4 @@ public class ViewWisata extends AppCompatActivity implements OnMapReadyCallback 
         RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(ViewWisata.this));
         requestQueue.add(jsonArrayRequest);
     }
-
-//    private void dataAtraksi() {
-//        final ProgressDialog progressDialog = new ProgressDialog(ViewWisata.this);
-//        progressDialog.setTitle("Proses Pengambilan Data");
-//        progressDialog.setMessage("mohon ditunggu .....");
-//        progressDialog.show();
-//
-//        Intent wisata = getIntent();
-//        final long id_wisata = wisata.getLongExtra("id_wisata",0);
-//        String id = String.valueOf(id_wisata);
-//
-//        final String alamatUrl = getString(R.string.alamatUrl);
-//        final String atraksiUrl = alamatUrl + "api/kegiatan/" + id;
-//
-//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
-//                (Request.Method.GET, atraksiUrl, null, new Response.Listener<JSONArray>() {
-//                    @Override
-//                    public void onResponse(JSONArray response) {
-//                        try {
-//                            WisataKegiatan atraksi;
-//
-//                            for (int i=0; i<response.length(); i++){
-//                                JSONObject listAtraksi = response.getJSONObject(i);
-//                                long id_atraksi = listAtraksi.getLong("id");
-//                                long desa_wisata_id = listAtraksi.getLong("desa_wisata_id");
-//                                String nama_atraksi = listAtraksi.getString("nama_atraksi");
-//                                String deskripsi = listAtraksi.getString("deskripsi");
-//                                String foto_atraksi = listAtraksi.getString("foto");
-//                                String nama_wisata = listAtraksi.getString("nama_wisata");
-//
-//                                foto_atraksi = alamatUrl+foto_atraksi;
-//
-//                                atraksi = new WisataKegiatan();
-//                                atraksi.setId_atraksi(id_atraksi);
-//                                atraksi.setDesa_wisata_id(desa_wisata_id);
-//                                atraksi.setNama_atraksi(nama_atraksi);
-//                                atraksi.setDeskripsi(deskripsi);
-//                                atraksi.setFoto_atraksi(foto_atraksi);
-//                                atraksi.setNama_wisata(nama_wisata);
-//
-//                                apiWisataKegiatan.add(atraksi);
-//                            }
-//
-//                            adapterWisataKegiatan = new AdapterWisataKegiatan(getApplicationContext(), apiWisataKegiatan);
-//                            linearLayoutManager = new LinearLayoutManager(ViewWisata.this, LinearLayoutManager.HORIZONTAL, false);
-//                            customDecoration = new CustomDecoration(10);
-//
-//                            listKegiatan.setAdapter(adapterWisataKegiatan);
-//                            adapterWisataKegiatan.notifyDataSetChanged();
-//                            adapterWisataKegiatan.notifyItemRemoved(response.length());
-//                            listKegiatan.setLayoutManager(linearLayoutManager);
-//                            progressDialog.dismiss();
-//
-//                        } catch (JSONException e){
-//                            e.printStackTrace();
-//                            Log.e("JSON", e.toString());
-//                            Toast.makeText(ViewWisata.this, "Data terkendala gangguan teknis, tidak ditemukan atau Tidak terkoneksi", Toast.LENGTH_SHORT).show();
-//                            progressDialog.dismiss();
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        error.printStackTrace();
-//                        Log.e("Volley", error.toString());
-//                        Toast.makeText(ViewWisata.this, "Server tidak berfungsi atau Non-aktif", Toast.LENGTH_SHORT).show();
-//                        progressDialog.dismiss();
-//                    }
-//                });
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(ViewWisata.this));
-//        requestQueue.add(jsonArrayRequest);
-//    }
 }

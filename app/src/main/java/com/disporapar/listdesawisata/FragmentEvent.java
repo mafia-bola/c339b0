@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,8 +24,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.disporapar.listdesawisata.API.Kalendar;
-import com.disporapar.listdesawisata.CustomAdapter.AdapterKalendar;
+import com.disporapar.listdesawisata.API.Event;
+import com.disporapar.listdesawisata.CustomAdapter.AdapterEvent;
 import com.disporapar.listdesawisata.CustomAdapter.CustomDecoration;
 
 import org.json.JSONArray;
@@ -33,88 +35,92 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class FragmentKalendar extends Fragment {
+public class FragmentEvent extends Fragment {
 
     RecyclerView recyclerView;
-    AdapterKalendar adapter;
+    AdapterEvent adapter;
     LinearLayoutManager linearLayoutManager;
-    ArrayList<Kalendar> apiKalendar = new ArrayList<>();
-    EditText editText;
+    ArrayList<Event> apiEvent = new ArrayList<>();
     CustomDecoration customDecoration;
-    ImageView btnSearch;
+    AppCompatSpinner spinner;
+    private String[] spinStatus = {
+            "Sudah Berjalan",
+            "Sedang Berjalan",
+            "Akan Berjalan"
+    };
+    TextView txtStatus;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_kalender, container, false);
+        View view = inflater.inflate(R.layout.fragment_event, container, false);
 
-        recyclerView = view.findViewById(R.id.listKalendar);
-        editText = view.findViewById(R.id.txtPencarian);
-        dataKalendar();
-        apiKalendar.clear();
+        recyclerView = view.findViewById(R.id.listEvent);
+        txtStatus = view.findViewById(R.id.txtStatus);
+        spinner = view.findViewById(R.id.spinStatus);
 
-        btnSearch = view.findViewById(R.id.btnSearch);
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+        final ArrayAdapter<String> adapterStatus = new ArrayAdapter<>(Objects.requireNonNull(getContext()),
+                android.R.layout.simple_spinner_item, spinStatus);
+
+        spinner.setAdapter(adapterStatus);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                if (editText.getText().toString() == null){
-                    dataKalendar();
-                    clearView();
-                } else {
-                    dataKalendar();
-                    clearView();
-                }
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                txtStatus.setText(adapterStatus.getItem(position));
+                dataEvent();
+                apiEvent.clear();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
         return view;
     }
 
-    private void clearView() {
-        apiKalendar.clear();
-    }
-
-    private void dataKalendar() {
+    private void dataEvent() {
         final ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setTitle("Proses Pengambilan Data");
         progressDialog.setMessage("mohon ditunggu .....");
         progressDialog.show();
 
-        final String pencarian = editText.getText().toString();
+        final String pencarian = txtStatus.getText().toString();
         final String alamatUrl = getString(R.string.alamatUrl);
-        final String kalendarUrl = alamatUrl + "api/kalendar/" + pencarian;
+        final String eventUrl = alamatUrl + "api/event/" + pencarian;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
-                (Request.Method.GET, kalendarUrl, null, new Response.Listener<JSONArray>() {
+                (Request.Method.GET, eventUrl, null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
-                            Kalendar kalendar;
+                            Event event;
 
                             for (int i=0; i<response.length(); i++){
-                                JSONObject listKalendar = response.getJSONObject(i);
-                                long id_kalendar = listKalendar.getLong("id");
-                                String judul_kalender = listKalendar.getString("judul");
-                                String deskripsi = listKalendar.getString("deskripsi");
-                                String foto_kalender = listKalendar.getString("foto");
+                                JSONObject listEvent = response.getJSONObject(i);
+                                long id_event = listEvent.getLong("id");
+                                String judul_event = listEvent.getString("judul");
+                                String deskripsi = listEvent.getString("deskripsi");
+                                String foto_event = listEvent.getString("foto");
+                                String status = listEvent.getString("status");
 
-                                foto_kalender = alamatUrl+foto_kalender;
+                                foto_event = alamatUrl+foto_event;
 
-                                kalendar = new Kalendar();
-                                kalendar.setId_kalendar(id_kalendar);
-                                kalendar.setJudul_kalendar(judul_kalender);
-                                kalendar.setDeskripsi(deskripsi);
-                                kalendar.setFoto_kalendar(foto_kalender);
+                                event = new Event();
+                                event.setId_event(id_event);
+                                event.setJudul_event(judul_event);
+                                event.setDeskripsi(deskripsi);
+                                event.setFoto_event(foto_event);
+                                event.setStatus(status);
 
-                                apiKalendar.add(kalendar);
+                                apiEvent.add(event);
                             }
 
-                            adapter = new AdapterKalendar(getContext(), apiKalendar);
+                            adapter = new AdapterEvent(getContext(), apiEvent);
                             linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-                            customDecoration = new CustomDecoration(10);
 
                             recyclerView.setAdapter(adapter);
-                            recyclerView.addItemDecoration(customDecoration);
                             adapter.notifyDataSetChanged();
                             adapter.notifyItemRemoved(response.length());
                             recyclerView.setLayoutManager(linearLayoutManager);

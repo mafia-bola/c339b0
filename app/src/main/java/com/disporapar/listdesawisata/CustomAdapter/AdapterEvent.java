@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,13 +38,16 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Event event = apiEvent.get(position);
 
-        PicassoClient.downloadImage(context, event.getFoto_event(), holder.imageEvent);
-        holder.imageEvent.setOnClickListener(new View.OnClickListener() {
+        PicassoClient.downloadImage(context, event.getFoto_event(), holder.imageKalendar);
+        holder.txtNamaKalendar.setText(event.getJudul_event());
+        holder.imageKalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent detail = new Intent(context, ViewEvent.class);
-                detail.putExtra("tanggal_berlaku", event.getTanggal_event());
+                detail.putExtra("judul_event", event.getJudul_event());
+                detail.putExtra("deskripsi", event.getDeskripsi());
                 detail.putExtra("foto_event", event.getFoto_event());
+                detail.putExtra("status", event.getStatus());
                 detail.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(detail);
             }
@@ -57,12 +61,14 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageEvent;
+        ImageView imageKalendar;
+        TextView txtNamaKalendar;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageEvent = itemView.findViewById(R.id.imageEvent);
+            imageKalendar = itemView.findViewById(R.id.imageEvent);
+            txtNamaKalendar = itemView.findViewById(R.id.txtNamaEvent);
         }
     }
 }

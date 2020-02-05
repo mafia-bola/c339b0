@@ -121,10 +121,8 @@ public class FragmentWisata extends Fragment {
 
                             adapter = new AdapterWisata(getContext(), apiWisata);
                             linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-                            customDecoration = new CustomDecoration(10);
 
                             recyclerView.setAdapter(adapter);
-                            recyclerView.addItemDecoration(customDecoration);
                             adapter.notifyDataSetChanged();
                             adapter.notifyItemRemoved(response.length());
                             recyclerView.setLayoutManager(linearLayoutManager);

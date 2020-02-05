@@ -13,10 +13,10 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/itb_stikom_bali"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/itb_stikom_bali"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
@@ -26,13 +26,12 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".ViewWisataFoto" />
-        <activity android:name=".ViewWisata" />
-        <activity android:name=".ViewKalendar" />
-        <activity android:name=".ViewKegiatan" />
-        <activity android:name=".ViewEvent" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ViewWisataFoto" android:screenOrientation="portrait"/>
+        <activity android:name=".ViewWisata" android:screenOrientation="portrait"/>
+        <activity android:name=".ViewEvent" android:screenOrientation="portrait"/>
+        <activity android:name=".ViewKegiatan" android:screenOrientation="portrait"/>
+        <activity android:name=".MenuActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

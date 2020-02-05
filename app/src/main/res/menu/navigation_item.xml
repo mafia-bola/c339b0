@@ -6,16 +6,6 @@
         android:title="Opsi">
         <menu>
             <item
-                android:id="@+id/indonesiaLanguage"
-                android:checked="false"
-                android:icon="@drawable/ic_language_black_24dp"
-                android:title="Pilih Bahasa Indonesia" />
-            <item
-                android:id="@+id/englishLanguage"
-                android:checked="false"
-                android:icon="@drawable/ic_language_black_24dp"
-                android:title="Pilih Bahasa Inggris" />
-            <item
                 android:id="@+id/exitApp"
                 android:checked="false"
                 android:icon="@drawable/ic_exit_to_app_black_24dp"

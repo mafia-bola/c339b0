@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:layout_marginBottom="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,8 +15,21 @@
                 android:layout_margin="10dp"
                 android:id="@+id/imageEvent"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="180dp"
                 android:scaleType="fitXY" />
+
+            <com.uncopt.android.widget.text.justify.JustifiedTextView
+                android:id="@+id/txtNamaEvent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"
+                android:text="Nama Wisata"/>
 
         </LinearLayout>
 

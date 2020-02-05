@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -180,10 +179,8 @@ public class FragmentKegiatan extends Fragment {
 
                             adapter = new AdapterKegiatan(getContext(), apiKegiatan);
                             linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-                            customDecoration = new CustomDecoration(10);
 
                             recyclerView.setAdapter(adapter);
-                            recyclerView.addItemDecoration(customDecoration);
                             adapter.notifyDataSetChanged();
                             adapter.notifyItemRemoved(response.length());
                             recyclerView.setLayoutManager(linearLayoutManager);
